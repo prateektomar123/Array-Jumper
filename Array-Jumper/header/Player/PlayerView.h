@@ -12,6 +12,7 @@ namespace Player
 
 		float player_height;
 		float player_width;
+		PlayerController* player_controller;
 
 		void initializePlayerImage();
 		void drawPlayer();
@@ -22,6 +23,7 @@ namespace Player
 
 	public:
 		PlayerView();
+		PlayerView(PlayerController* controller);
 		~PlayerView();
 
 		void initialize();

@@ -5,6 +5,8 @@
 #include "../../header/Level/LevelModel.h"
 #include "../../header/Sound/SoundService.h"
 
+
+
 namespace Player
 {
 	using namespace Global;
@@ -25,20 +27,63 @@ namespace Player
 		player_model->initialize();
 		player_view->initialize();
 
-		ServiceLocator::getInstance()->getEventService();
+		event_service = ServiceLocator::getInstance()->getEventService();
+
+		resetPlayer();
 	}
 
 	void PlayerController::update()
 	{
 		player_view->update();
+		readInput();
 	}
 
-	bool PlayerController::isPositionInBound(int targetPosition)
+	void PlayerController::render()
 	{
-		if (targetPosition >= 0 && targetPosition < LevelData::NUMBER_OF_BOXES)
-			return true;
-		return false;
+		player_view->render();
 	}
+
+	PlayerState PlayerController::getPlayerState()
+	{
+		return player_model->getPlayerState();
+	}
+
+	void PlayerController::setPlayerState(PlayerState new_player_state)
+	{
+		player_model->setPlayerState(new_player_state);
+	}
+
+	int PlayerController::getCurrentPosition()
+	{
+		return player_model->getCurrentPosition();
+	}
+
+	int PlayerController::getCurrentLives()
+	{
+		return player_model->getCurrentLives();
+	}
+
+	void PlayerController::takeDamage()
+	{
+		player_model->decreamentLife();
+		if (player_model->getCurrentLives() <= 0)
+			onDeath();
+		else
+			player_model->resetPosition();
+	}
+
+
+	void PlayerController::destroy()
+	{
+		delete(player_model);
+		delete(player_view);
+	}
+
+	void PlayerController::resetPlayer()
+	{
+		player_model->resetPlayer();
+	}
+
 	void PlayerController::readInput()
 	{
 		if (event_service->pressedRightArrowKey() || event_service->pressedDKey())
@@ -55,12 +100,8 @@ namespace Player
 			else
 				move(MovementDirection::BACKWARD);
 		}
-	}
 
-	/*BlockType LevelModel::getCurrentBoxValue(int currentPosition)
-	{
-		return current_level_data.level_boxes[currentPosition];
-	}*/
+	}
 
 	void PlayerController::move(MovementDirection direction)
 	{
@@ -77,7 +118,7 @@ namespace Player
 			steps = 0;
 			break;
 		}
-
+		
 		targetPosition = player_model->getCurrentPosition() + steps;
 
 		if (!isPositionInBound(targetPosition))
@@ -85,7 +126,9 @@ namespace Player
 
 		player_model->setCurrentPosition(targetPosition);
 		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::MOVE);
+		ServiceLocator::getInstance()->getGameplayService()->onPositionChanged(targetPosition);
 	}
+
 	void PlayerController::jump(MovementDirection direction)
 	{
 		int current_position = player_model->getCurrentPosition();
@@ -112,47 +155,16 @@ namespace Player
 
 		player_model->setCurrentPosition(targetPosition);
 		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::JUMP);
+		ServiceLocator::getInstance()->getGameplayService()->onPositionChanged(targetPosition);
 	}
 
-	void PlayerController::render()
+	bool PlayerController::isPositionInBound(int targetPosition)
 	{
-		player_view->render();
+		if(targetPosition >= 0 && targetPosition < LevelData::NUMBER_OF_BOXES)
+			return true;
+		return false;
 	}
 
-	PlayerState PlayerController::getPlayerState()
-	{
-		return player_model->getPlayerState();
-	}
-	int PlayerController::getCurrentPosition()
-	{
-		return player_model->getCurrentPosition();
-	}
-
-	void PlayerController::setPlayerState(PlayerState new_player_state)
-	{
-		player_model->setPlayerState(new_player_state);
-	}
-	void PlayerController::takeDamage()
-	{
-		player_model->decreamentLife();
-		if (player_model->getCurrentLives() <= 0)
-			onDeath();
-		else
-			player_model->resetPosition();
-	}
-	int PlayerController::getCurrentLives()
-	{
-		return player_model->getCurrentLives();
-	}
-	void PlayerController::resetPlayer()
-	{
-		player_model->resetPlayer();
-	}
-	void PlayerController::destroy()
-	{
-		delete(player_model);
-		delete(player_view);
-	}
 	void PlayerController::onDeath()
 	{
 		ServiceLocator::getInstance()->getGameplayService()->onDeath();

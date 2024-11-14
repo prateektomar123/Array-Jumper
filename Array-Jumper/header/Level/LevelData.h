@@ -3,7 +3,7 @@
 
 namespace Level
 {
-
+        
     struct LevelData
     {
         static const int NUMBER_OF_BOXES = 10;

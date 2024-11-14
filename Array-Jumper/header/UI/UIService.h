@@ -19,6 +19,7 @@ namespace UI
 		Instructions::InstructionsUIController* instructions_ui_controller;
 		GameplayUI::GameplayUIController* gameplay_ui_controller;
 
+
 		void createControllers();
 		void initializeUIElements();
 		void initializeControllers();

@@ -9,7 +9,6 @@
 
 namespace Global
 {
-    
     class ServiceLocator
     {
     private:
@@ -41,6 +40,5 @@ namespace Global
         Player::PlayerService* getPlayerService();
         Level::LevelService* getLevelService();
         Gameplay::GameplayService* getGameplayService();
-        
     };
 }

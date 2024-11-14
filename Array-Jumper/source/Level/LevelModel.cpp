@@ -4,7 +4,7 @@
 namespace Level
 {
 	LevelModel::LevelModel() {}
-	LevelModel::~LevelModel() {}
+	LevelModel::~LevelModel(){}
 
 	BlockType LevelModel::getCurrentBoxValue(int currentPosition)
 	{
@@ -13,7 +13,7 @@ namespace Level
 
 	bool LevelModel::isLastLevel()
 	{
-		if (current_level_index == LevelConfiguration::NUMBER_OF_LEVELS - 1)
+		if(current_level_index == LevelConfiguration::NUMBER_OF_LEVELS - 1)
 			return true;
 		return false;
 	}
@@ -33,3 +33,4 @@ namespace Level
 		current_level_index = 0;
 	}
 }
+

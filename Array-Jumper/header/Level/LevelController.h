@@ -15,7 +15,7 @@ namespace Level
 	public:
 		LevelController();
 		~LevelController();
-
+		
 		void initialize();
 		void update();
 		void render();
@@ -29,3 +29,4 @@ namespace Level
 		void reset();
 	};
 }
+

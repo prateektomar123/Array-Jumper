@@ -18,7 +18,6 @@ namespace Player
 		void readInput();
 		void move(MovementDirection direction);
 		void jump(MovementDirection direction);
-		Level::BlockType getCurrentBoxValue(int currentPosition);
 		void destroy();
 		bool isPositionInBound(int targetPosition);
 
@@ -35,6 +34,7 @@ namespace Player
 
 		int getCurrentPosition();
 		
+		void resetPlayer();
 		void takeDamage();
 
 	};

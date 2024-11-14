@@ -8,8 +8,10 @@ namespace Gameplay
 	private:
 
 		bool isObstacle(Level::BlockType value);
+		bool isEndBlock(Level::BlockType value);
 
 		void processObstacle();
+		void processEndBlock();
 
 	public:
 		void onPositionChanged(int position);

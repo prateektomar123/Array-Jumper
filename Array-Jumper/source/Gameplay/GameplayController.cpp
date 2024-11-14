@@ -17,12 +17,20 @@ namespace Gameplay
 			return true;
 		return false;
 	}
+	bool GameplayController::isEndBlock(Level::BlockType value)
+	{
+		if (value == BlockType::TARGET)
+			return true;
+		return false;
+	}
 	void GameplayController::onPositionChanged(int position)
 	{
 		BlockType value = ServiceLocator::getInstance()->getLevelService()->getCurrentBoxValue(position);
 
 		if (isObstacle(value))
 			processObstacle();
+		if (isEndBlock(value))
+			processEndBlock();
 	}
 	void GameplayController::processObstacle()
 	{

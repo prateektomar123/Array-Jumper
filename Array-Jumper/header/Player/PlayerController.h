@@ -1,0 +1,43 @@
+#pragma once
+
+#include "MovementDirection.h"
+#include "../Event/EventService.h"
+
+namespace Player
+{
+	class PlayerView;
+	class PlayerModel;
+	enum class PlayerState;
+	class PlayerController
+	{
+	private:
+		PlayerModel* player_model;
+		PlayerView* player_view;
+		Event::EventService* event_service;
+
+		void readInput();
+		void move(MovementDirection direction);
+		void jump(MovementDirection direction);
+		void destroy();
+		bool isPositionInBound(int targetPosition);
+		void onDeath();
+
+	public:
+		PlayerController();
+		~PlayerController();
+
+		PlayerState getPlayerState();
+		void setPlayerState(PlayerState new_player_state);
+
+		void initialize();
+		void update();
+		void render();
+
+		int getCurrentPosition();
+		int getCurrentLives();
+
+		void resetPlayer();
+		void takeDamage();
+
+	};
+}

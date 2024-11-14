@@ -21,6 +21,7 @@ namespace Level
 		UI::UIElement::ImageView* obstacle_two_overlay_image;
 		const float background_alpha = 110.f;
 		UI::UIElement::ImageView* getBoxOverlayImage(BlockType block_type);
+		sf::Vector2f calculateBoxPosition(int index);
 
 		void createImages();
 		void initializeImages();
@@ -28,6 +29,8 @@ namespace Level
 		void drawLevel();
 		void deleteImages();
 		void calculateBoxDimensions();
+		void calculateBoxWidthHeight();
+		void calculateBoxSpacing();
 		void drawBox(sf::Vector2f position);
 		void drawBoxValue(sf::Vector2f position, BlockType box_value);
 

@@ -26,13 +26,16 @@ namespace Player
 		PlayerController();
 		~PlayerController();
 
+		PlayerState getPlayerState();
+		void setPlayerState(PlayerState new_player_state);
+
 		void initialize();
 		void update();
 		void render();
 
 		int getCurrentPosition();
+		
+		void takeDamage();
 
-		PlayerState getPlayerState();
-		void setPlayerState(PlayerState new_player_state);
 	};
 }

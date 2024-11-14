@@ -132,7 +132,10 @@ namespace Player
 	{
 		player_model->setPlayerState(new_player_state);
 	}
-
+	void PlayerController::takeDamage()
+	{
+		player_model->resetPlayer();
+	}
 	void PlayerController::destroy()
 	{
 		delete(player_model);

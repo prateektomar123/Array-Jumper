@@ -8,7 +8,6 @@ namespace UI
 {
 	namespace Credits
 	{
-
 		class CreditsScreenUIController
 		{
 		private:

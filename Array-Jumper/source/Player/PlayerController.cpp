@@ -37,6 +37,10 @@ namespace Player
 	{
 		return player_model->getPlayerState();
 	}
+	int PlayerController::getCurrentPosition()
+	{
+		return player_model->getCurrentPosition();
+	}
 
 	void PlayerController::setPlayerState(PlayerState new_player_state)
 	{

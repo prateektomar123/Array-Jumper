@@ -21,6 +21,8 @@ namespace Player
 		void update();
 		void render();
 
+		int getCurrentPosition();
+
 		PlayerState getPlayerState();
 		void setPlayerState(PlayerState new_player_state);
 	};

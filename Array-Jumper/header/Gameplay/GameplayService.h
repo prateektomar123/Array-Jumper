@@ -7,9 +7,11 @@ namespace Gameplay
 	{
 		private:
 			GameplayController* gameplay_controller;
-
+			void destroy();
 		public:
 			GameplayService();
 			~GameplayService();
+
+			void onDeath();
 	};
 }

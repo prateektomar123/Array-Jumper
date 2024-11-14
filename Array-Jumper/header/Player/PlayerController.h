@@ -20,6 +20,7 @@ namespace Player
 		void jump(MovementDirection direction);
 		void destroy();
 		bool isPositionInBound(int targetPosition);
+		void onDeath();
 
 	public:
 		PlayerController();
@@ -33,7 +34,8 @@ namespace Player
 		void render();
 
 		int getCurrentPosition();
-		
+		int getCurrentLives();
+
 		void resetPlayer();
 		void takeDamage();
 

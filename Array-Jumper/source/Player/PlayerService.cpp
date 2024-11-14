@@ -26,6 +26,14 @@ namespace Player
 	{
 		player_controller->takeDamage();
 	}
+
+	int PlayerService::getCurrentLives()
+	{
+		return player_controller->getCurrentLives();
+	}
+
+
+	void PlayerService::resetPlayer() { player_controller->resetPlayer(); }
 	void PlayerService::levelComplete() { player_controller->resetPlayer(); }
 	void PlayerService::destroy() { delete(player_controller); }
 }

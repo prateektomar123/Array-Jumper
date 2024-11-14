@@ -13,7 +13,11 @@ namespace Gameplay
 		void processObstacle();
 		void processEndBlock();
 
+		
+		void gameOver();
+
 	public:
 		void onPositionChanged(int position);
+		void onDeath();
 	};
 }

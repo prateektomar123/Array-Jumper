@@ -17,6 +17,10 @@ namespace Gameplay
 			return true;
 		return false;
 	}
+	void GameplayController::onDeath()
+	{
+		gameOver();
+	}
 	bool GameplayController::isEndBlock(Level::BlockType value)
 	{
 		if (value == BlockType::TARGET)
@@ -35,6 +39,12 @@ namespace Gameplay
 	void GameplayController::processObstacle()
 	{
 		ServiceLocator::getInstance()->getPlayerService()->takeDamage();
+		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
+	}
+	
+	void GameplayController::gameOver()
+	{
+		GameService::setGameState(GameState::CREDITS);
 		ServiceLocator::getInstance()->getSoundService()->playSound(SoundType::DEATH);
 	}
 }

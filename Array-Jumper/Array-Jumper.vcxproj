@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="classicArrayJumperProblem.cpp" />
     <ClCompile Include="source\Gameplay\GameplayService.cpp" />
     <ClCompile Include="source\Gameplay\GameplayController.cpp" />
     <ClCompile Include="source\Level\LevelModel.cpp" />

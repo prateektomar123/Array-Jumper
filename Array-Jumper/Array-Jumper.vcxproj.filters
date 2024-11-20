@@ -47,13 +47,15 @@
     <ClCompile Include="source\Level\LevelController.cpp" />
     <ClCompile Include="source\Level\LevelService.cpp" />
     <ClCompile Include="source\Level\LevelModel.cpp" />
-    <ClCompile Include="source\UI\UI\UIElement\AnimatedImageView.cpp" />
-    <ClCompile Include="source\UI\UI\UIElement\ButtonView.cpp" />
-    <ClCompile Include="source\UI\UI\UIElement\ImageView.cpp" />
-    <ClCompile Include="source\UI\UI\UIElement\TextView.cpp" />
-    <ClCompile Include="source\UI\UI\UIElement\UIView.cpp" />
     <ClCompile Include="source\Gameplay\GameplayController.cpp" />
     <ClCompile Include="source\Gameplay\GameplayService.cpp" />
+    <ClCompile Include="source\UI\Gameplay\GameplayUIController.cpp" />
+    <ClCompile Include="source\UI\UIElement\AnimatedImageView.cpp" />
+    <ClCompile Include="source\UI\UIElement\ButtonView.cpp" />
+    <ClCompile Include="source\UI\UIElement\ImageView.cpp" />
+    <ClCompile Include="source\UI\UIElement\TextView.cpp" />
+    <ClCompile Include="source\UI\UIElement\UIView.cpp" />
+    <ClCompile Include="classicArrayJumperProblem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\Main\GameService.h">
@@ -96,6 +98,9 @@
     <ClInclude Include="header\Level\BlockType.h" />
     <ClInclude Include="header\Gameplay\GameplayController.h" />
     <ClInclude Include="header\Gameplay\GameplayService.h" />
+    <ClInclude Include="header\Level\LevelConfiguration.h" />
+    <ClInclude Include="header\Player\MovementDirection.h" />
+    <ClInclude Include="header\UI\Gameplay\GameplayUIController.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="assets\sounds\background_music.mp3" />
